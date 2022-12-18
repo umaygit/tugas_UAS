@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+  <link rel="stylesheet" href="{{url_for('static', filename='list.css')}}" />
+  <link rel="stylesheet" href="{{url_for('static', filename='print.css')}}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>List Mahasiswa</title>
+</head>
+
+<body>
+  <!-- navbar -->
+  <div class="container-navbar fixed-top">
+    <nav class="navbar navbar-expand-lg bg mb-3 shadow justify-content-end">
+      <div class="container">
+        <img src="{{url_for('static', filename='3.png')}}" alt="Logo" class="d-inline-block align-text-top" />
+
+        <div class="collapse navbar-collapse font-nav" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="mahasiswa">Mahasiswa</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="dosen">Dosen</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="matkul">Mata Kuliah</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="jurusan">Jurusan</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="nilai">Nilai</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="khs">KHS</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- content -->
+  <div class="print-container">
+    <table>
+      <br><br><br><br>
+      <tr>
+        <td class="logo"><img src="static/stmik.png" width="110px" alt=""></td>
+        <td class="tengah">
+          <h5>SEKOLAH TINGGI MANAJEMEN INFORMATIKA DAN KOMPUTER</h5>
+          <h2>(STMIK) SYAIKH ZAINUDDIN NW</h2>
+          <h4>ANJANI LOMBOK TIMUR - NTB</h4>
+          <h6>SK. KementrianPendidikanNasional RI Nomor : 80/D/0/2006</h6>
+          <b>Alamat : Jln. Raya Mataram-Lb.Lombok KM.49 Anjami Lombok Timur NTB. Telp/Fax. 0376-631645 KP.83652</b>
+        </td>
+      </tr>
+    </table>
+    <div class="container-list">
+      <div class="container-fluid  shadow-lg rounded-2 p-lg-5">
+        <h3>Kartu Hasil Studi</h3>
+        <br> <br>
+
+        <table class="table table-bordered table-hover table-striped text-uppercase">
+          <tr>
+            <th class="text-center">ID</th>
+            <th class="text-center">Mata Kuliah</th>
+            <th class="text-center">Kredit</th>
+            <th class="text-center">Nilai</th>
+            <th class="text-center">KxN</th>
+          </tr>
+
+          <tbody>
+            {% set jumlah_sks = namespace(value=0) %}
+            {% set ip = namespace(value=0) %}
+            {% set jumlah_kxn = namespace(value=0) %}
+            {% set jumlah_sks_lulus = namespace(value=0) %}
+            {% set jumlah_sks_gagal = namespace(value=0) %}
+          </tbody>
+          {% for khs in khs %}
+          {% set jumlah_sks.value = jumlah_sks.value + khs[4] %}
+          <tr>
+            <td class="text-center">{{ khs[0] }}</td>
+            <td class="text-center">{{ khs[3] }}</td>
+            <td class="text-center">{{ khs[4] }}</td>
+            <td class="text-center">
+              {% if khs[9] <= 100 and khs[9]>= 80 %}
+                A
+                {% set A = 4 %}
+                {% set kxn = (khs[4] * A) %}
+                {% set jumlah_sks_lulus.value = jumlah_sks_lulus.value + khs[4] %}
+                {% elif khs[9] <= 79 and khs[9]>= 70 %}
+                  B
+                  {% set B = 3 %}
+                  {% set kxn = (khs[4] * B) %}
+                  {% set jumlah_sks_lulus.value = jumlah_sks_lulus.value + khs[4] %}
+                  {% elif khs[9] <= 69 and khs[9]>= 60 %}
+                    C
+                    {% set C = 2 %}
+                    {% set kxn = (khs[4] * C) %}
+                    {% set jumlah_sks_lulus.value = jumlah_sks_lulus.value + khs[4] %}
+                    {% elif khs[9] <= 59 and khs[9]>= 0 %}
+                      D
+                      {% set D = 1 %}
+                      {% set kxn = (khs[4] * D) %}
+                      {% set jumlah_sks_gagal.value = jumlah_sks_gagal.value + khs[4] %}
+                      {% else %}
+                      E
+                      {% set E = 0 %}
+                      {% set kxn = (khs[4] * E) %}
+                      {% set jumlah_sks_gagal.value = jumlah_sks_gagal.value + khs[4] %}
+                      {% endif %}
+            </td>
+            <td class="text-center">{{ kxn }} </td>
+            {% set jumlah_kxn.value = jumlah_kxn.value + kxn %}
+            {% set ip.value = jumlah_kxn.value / jumlah_sks.value %}
+
+          </tr>
+
+          {% endfor %}
+
+          <tr>
+            <th colspan="2" class="text-center">Jumlah</th>
+            <td class="text-center">{{ jumlah_sks.value }}</td>
+            <td class="text-center"></td>
+            <td class="text-center">{{ jumlah_kxn.value }}</td>
+          </tr>
+
+          <table class="table    text-uppercase">
+            <tr>
+              <th class="text-lift">SKS yang di ambil</th>
+              <td class="text-center">{{ jumlah_sks.value }}</td>
+            </tr>
+            <tr>
+              <th class="text-lift">SKS yang lulus</th>
+              <td class="text-center">{{ jumlah_sks_lulus.value }}</td>
+            </tr>
+            <tr>
+              <th class="text-lift">SKS yang gagal</th>
+              <td class="text-center">{{ jumlah_sks_gagal.value }}</td>
+            </tr>
+            <tr>
+              <th class="text-lift">IP Semester</th>
+              <td class="text-center">{{ ip.value }}</td>
+            </tr>
+          </table>
+        </table>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end p-lg-4">
+          <a href="/"><button class="btn btn-primary me-md-2" type="button"><i class="fa-solid fa-backward"></i>
+              Kembali</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- footer -->
+  <footer>
+    <div class="footer-content">
+      <h3>STMIK</h3>
+      <p>Sekolah Tinggi Manajeman Informatika dan Komputer</p>
+      <ul class="socials">
+
+        <li><a href=""><i class="fa-sharp fa-solid fa-thumbs-up"></i></i></a></li>
+        <li><a href=""><i class="fa-brands fa-google"></i></a></li>
+        <li><a href=""><i class="fa-sharp fa-solid fa-circle-envelope"></i></a></li>
+        <li><a href=""><i class="fa-brands fa-youtube"></i></a></li>
+        <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <p>Copyright &pemrograman:2022 . designed</p>
+    </div>
+  </footer>
+
+  <!-- link js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

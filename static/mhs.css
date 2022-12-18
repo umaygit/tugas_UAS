@@ -1,0 +1,136 @@
+@import url("https://fonts.googleapis.com/css2?family=Alegreya:wght@600;800&family=Noto+Serif+NP+Hmong:wght@400;500&family=Roboto:wght@100;300;400;900&family=Secular+One&family=Yanone+Kaffeesatz:wght@200;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #fcfcfc;
+}
+/* navbar */
+.bg {
+  background-color: #3ea56a !important;
+}
+.container-navbar {
+  height: auto;
+}
+.btn-outline-success {
+  color: #fff;
+  border-color: #fff;
+}
+.btn-outline-success:hover {
+  color: #111;
+  background-color: #fff;
+  border-color: #111;
+}
+.form-control:hover {
+  border-color: #111 !important;
+}
+
+.font-nav ul li {
+  margin: 10px;
+}
+.font-nav li a {
+  font-family: "Noto Serif NP Hmong", serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #fff;
+}
+.container img {
+  height: 40px;
+  width: 110px;
+}
+
+
+/* content */
+.container-input {
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+.container-input h4 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 800;
+  text-align: center;
+  font-size: 35px;
+}
+.btn-outline-info:hover {
+  color: #fff;
+}
+.btn {
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+}
+
+
+/* footer */
+footer {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #2e8b57;
+  height: auto;
+  width: 100%;
+  font-family: "Open Sans";
+  padding-top: 20px;
+  color: #fff;
+}
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+.footer-content h3 {
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-transform: capitalize;
+  line-height: 1rem;
+}
+.footer-content p {
+  max-width: 500px;
+
+  font-size: 14px;
+}
+.socials {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.socials li {
+  margin: 0 10px;
+}
+.socials a {
+  text-decoration: none;
+  color: #fff;
+}
+.socials a i {
+  font-size: 1.1rem;
+}
+.socials a:hover i {
+  color: aqua;
+}
+.footer-bottom {
+  background: #3cb371;
+  padding: 10px 0;
+  width: 100%;
+  text-align: center;
+}
+.footer-bottom p {
+  font-size: 14px;
+  word-spacing: 2px;
+  text-transform: uppercase;
+}
+.footer-bottom span {
+  text-transform: uppercase;
+  opacity: 0.4;
+  font-weight: 200;
+}

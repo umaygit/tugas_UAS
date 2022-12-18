@@ -1,0 +1,31 @@
+body {
+    font-family: Arial;
+    background-color: #ccc;
+}
+.print-container {
+    width: 793px;
+    margin: 0 auto;
+    background-color: #fff;
+    height: 1247px;
+    padding: 5px;
+}
+table {
+    border-bottom: 5px;
+    stroke-linecap: #000;
+    padding: 2px;
+    align-items: center;
+
+}
+.logo {
+    padding-left: 10px;
+    padding-bottom: 20px;
+}
+.tengah {
+    text-align: center;
+    line-height: 5x;
+}
+b {background-color: rgb(29, 28, 28);
+    color: #fff;
+    padding: 5px;
+    font-size: small;
+}

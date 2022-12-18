@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{{url_for('static', filename='mhs.css')}}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Mata Kuliah</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <div class="container-navbar fixed-top">
+      <nav class="navbar navbar-expand-lg bg mb-3 shadow">
+        <div class="container">
+          <img src="{{url_for('static', filename='3.png')}}" alt="Logo" class="d-inline-block align-text-top" />
+
+          <div class="collapse navbar-collapse font-nav" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="/mahasiswa">Mahasiswa</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/dosen">Dosen</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/matkul">Mata Kuliah</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/nilai">Nilai</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/khs">KHS</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- form input -->
+    <div class="container-input">
+    <div class="container mt-5 mb-6 shadow-sm p-3 bg-body rounded shadow-lg">
+      <form class="row g-3" action="/matkul/add_matkul" method="POST">
+        <h4><b>Form Input Mata Kuliah</b></h4>
+        <div class="col-md-4">
+          <label for="kode_mata_kuliah" class="form-label">Kode Mata Kuliah</label>
+          <input type="text" class="form-control" id="kode_mata_kuliah" placeholder="Masukkan Kode Mata Kuliah" name="kode_mata_kuliah" />
+        </div>
+        <div class="col-md-8">
+          <label for="nidn" class="form-label">Nidn</label>
+          <input type="text" class="form-control" id="nidn" placeholder="Masukkan Nama Dosen" name="nidn" />
+        </div>
+        <div class="col-md-10">
+          <label for="mata_kuliah" class="form-label">Mata Kuliah</label>
+          <input type="text" class="form-control" id="mata_kuliah" placeholder="Masukkan Mata Kuliah" name="mata_kuliah" />
+        </div>
+        <div class="col-md-2">
+          <label for="sks" class="form-label">SKS</label>
+          <input type="text" class="form-control" id="sks" placeholder="SKS " name="sks" />
+        </div>
+
+        <div class="col-12">
+          <a href="/matkul"><button type="button" class="btn btn-outline-danger m-2"><i class="fa-solid fa-backward"></i> Batal</button></a>
+          <button type="simpan" class="btn btn-outline-info">
+            <i class="fa-solid fa-floppy-disk"></i> Simpan
+          </button>
+        </div>
+      </form>
+    </div>
+    </div>
+
+    <!-- footer -->
+   <footer>
+      <div class="footer-content">
+        <h3>STMIK</h3>
+        <p>Sekolah Tinggi Manajeman Informatika dan Komputer</p>
+        <ul class="socials">
+          
+          <li><a href=""><i class="fa-sharp fa-solid fa-thumbs-up"></i></i></a></li>
+          <li><a href=""><i class="fa-brands fa-google"></i></a></li>
+          <li><a href=""><i class="fa-sharp fa-solid fa-circle-envelope"></i></a></li>
+          <li><a href=""><i class="fa-brands fa-youtube"></i></a></li>
+          <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <p>Copyright &pemrograman:2022 . designed</p>
+      </div>
+    </footer>
+    <!-- link js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  </body>
+</html>
